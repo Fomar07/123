@@ -3,27 +3,58 @@ const root = document.documentElement;
 const toggleButton = document.getElementById('theme-toggle');
 const statusText = document.getElementById('theme-status');
 
-function applyTheme(theme) {
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function readStoredTheme() {
+  const savedTheme = localStorage.getItem(storageKey);
+  return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : null;
+}
+
+function renderThemeState(theme) {
   root.setAttribute('data-theme', theme);
-  localStorage.setItem(storageKey, theme);
+
+  if (!toggleButton || !statusText) {
+    return;
+  }
 
   const isDark = theme === 'dark';
   toggleButton.setAttribute('aria-pressed', String(isDark));
   statusText.textContent = `Сейчас: ${isDark ? 'темная' : 'светлая'}`;
 }
 
-function getInitialTheme() {
-  const savedTheme = localStorage.getItem(storageKey);
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    return savedTheme;
-  }
+function applyTheme(theme, options = {}) {
+  renderThemeState(theme);
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  if (!options.skipStorage) {
+    localStorage.setItem(storageKey, theme);
+  }
 }
 
-applyTheme(getInitialTheme());
+function initTheme() {
+  const initialTheme = readStoredTheme() ?? getSystemTheme();
+  renderThemeState(initialTheme);
+}
 
-toggleButton.addEventListener('click', () => {
-  const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(nextTheme);
+initTheme();
+
+if (toggleButton) {
+  toggleButton.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+}
+
+window.addEventListener('storage', (event) => {
+  if (event.key !== storageKey) {
+    return;
+  }
+
+  const nextTheme = event.newValue === 'light' || event.newValue === 'dark'
+    ? event.newValue
+    : getSystemTheme();
+
+  applyTheme(nextTheme, { skipStorage: true });
 });
