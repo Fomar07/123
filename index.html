@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СРС №4 | Светлая и темная тема</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <p class="eyebrow">Учебный проект</p>
+      <h1>Темная и светлая тема</h1>
+      <p class="lead">
+        Переключайте оформление страницы и сохраняйте выбранную тему в
+        <code>localStorage</code>.
+      </p>
+
+      <div class="controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+          <span class="toggle-label">Сменить тему</span>
+          <span id="theme-status" class="status">Сейчас: светлая</span>
+        </button>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-box">
+          <h2>Что делает проект</h2>
+          <p>Меняет визуальную тему интерфейса между светлой и темной.</p>
+        </article>
+        <article class="info-box">
+          <h2>Что сохраняется</h2>
+          <p>Выбор пользователя записывается в браузерное хранилище.</p>
+        </article>
+        <article class="info-box">
+          <h2>Что проверить</h2>
+          <p>После перезагрузки страницы тема должна остаться прежней.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
