@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>СРС №4 | Масштабирование темы</title>
+  <title>СРС №4 | Архитектура темы</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,15 @@
     <section class="card">
       <nav class="topbar" aria-label="Навигация по проекту">
         <a class="nav-link" href="index.html">Главная</a>
-        <a class="nav-link is-active" href="guide.html">Масштабирование</a>
+        <a class="nav-link is-active" href="guide.html">Архитектура</a>
+        <a class="nav-link" href="quiz.html">Квест</a>
       </nav>
 
-      <p class="eyebrow">Вторая страница проекта</p>
+      <p class="eyebrow">Общая логика проекта</p>
       <h1>Как тема применяется на нескольких страницах</h1>
       <p class="lead">
-        Эта страница нужна для демонстрации масштабируемости. Она использует тот же
-        <code>style.css</code> и тот же <code>script.js</code>, поэтому тема ведет
-        себя одинаково во всем проекте.
+        Эта страница показывает, как один и тот же набор CSS-переменных и один
+        JavaScript-файл позволяют поддерживать единое поведение темы во всем проекте.
       </p>
 
       <div class="controls">
@@ -32,7 +32,7 @@
       <div class="steps-grid">
         <article class="step-box">
           <h2>1. Общий CSS</h2>
-          <p>Обе страницы используют единый набор CSS-переменных для цветов и фона.</p>
+          <p>Все страницы используют единый набор переменных для фона, текста, акцентов и карточек.</p>
         </article>
         <article class="step-box">
           <h2>2. Общий JavaScript</h2>
@@ -40,7 +40,7 @@
         </article>
         <article class="step-box">
           <h2>3. Общий ключ хранения</h2>
-          <p>Обе страницы читают одно и то же значение <code>preferred-theme</code> в браузере.</p>
+          <p>Во всех страницах используется одно значение <code>preferred-theme</code>.</p>
         </article>
       </div>
 
@@ -48,19 +48,19 @@
         <h2>Почему это удобно</h2>
         <div class="compare-grid">
           <article class="note-box">
-            <h3>Для небольшого сайта</h3>
+            <h3>Для небольшого проекта</h3>
             <ul class="compare-list">
               <li>не нужно дублировать код на каждой странице</li>
-              <li>достаточно подключить общий JS-файл</li>
-              <li>тема будет одинаковой во всех разделах</li>
+              <li>достаточно подключить один JS-файл</li>
+              <li>тема выглядит одинаково во всех разделах</li>
             </ul>
           </article>
           <article class="note-box">
-            <h3>Для более крупного проекта</h3>
+            <h3>Для расширения</h3>
             <ul class="compare-list">
-              <li>логику темы можно вынести в отдельный модуль</li>
-              <li>состояние можно хранить локально или на сервере</li>
-              <li>можно добавить дополнительные варианты оформления</li>
+              <li>можно вынести тему в отдельный модуль</li>
+              <li>можно добавить новые варианты оформления</li>
+              <li>можно развивать проект без переписывания базы</li>
             </ul>
           </article>
         </div>
