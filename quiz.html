@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СРС №4 | Интерактивный квест</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <nav class="topbar" aria-label="Навигация по проекту">
+        <a class="nav-link" href="index.html">Главная</a>
+        <a class="nav-link" href="guide.html">Архитектура</a>
+        <a class="nav-link is-active" href="quiz.html">Квест</a>
+      </nav>
+
+      <p class="eyebrow">Интерактивный формат</p>
+      <h1>Квест по теме светлой и темной темы</h1>
+      <p class="lead">
+        Эта страница оформлена как быстрая викторина в стиле интерактивного квеста:
+        15 вопросов, таймер, очки и мгновенная проверка ответов.
+      </p>
+
+      <div class="controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+          <span class="toggle-label">Сменить тему</span>
+          <span id="theme-status" class="status">Сейчас: светлая</span>
+        </button>
+      </div>
+
+      <section class="quiz-shell">
+        <div class="quiz-layout">
+          <div class="quiz-board">
+            <div class="quiz-head">
+              <div class="quiz-badge" id="quiz-stage">Этап 1 из 5</div>
+              <div class="quiz-timer">Время: <span id="quiz-timer">20</span> c</div>
+            </div>
+
+            <div class="quiz-progress" aria-hidden="true">
+              <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+
+            <div class="quiz-meta" id="quiz-meta">Вопрос 1 из 15</div>
+            <h2 class="quiz-question" id="quiz-question">Загрузка вопроса...</h2>
+            <div class="quiz-options" id="quiz-options"></div>
+            <div class="quiz-feedback" id="quiz-feedback"></div>
+
+            <div class="quiz-controls">
+              <button class="quiz-button primary" id="next-question" type="button" disabled>Следующий вопрос</button>
+              <button class="quiz-button secondary" id="restart-quiz" type="button">Начать заново</button>
+            </div>
+          </div>
+
+          <aside class="quiz-side">
+            <h3>Сюжет квеста</h3>
+            <p>Нужно довести интерфейс до готового состояния: настроить тему, сохранить выбор пользователя, восстановить состояние и масштабировать решение.</p>
+
+            <div class="quiz-score" id="quiz-score">0</div>
+            <p>очков</p>
+
+            <div class="quiz-stage">
+              <strong>Этапы</strong>
+              <ul>
+                <li>Основа темы</li>
+                <li>Работа с localStorage</li>
+                <li>Восстановление состояния</li>
+                <li>Системная тема и вкладки</li>
+                <li>Масштабирование проекта</li>
+              </ul>
+            </div>
+
+            <div class="quiz-result" id="quiz-result" hidden>
+              <h3>Результат</h3>
+              <p id="quiz-result-text"></p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <p class="quiz-footer">Талгатулы Диас, ИИ-402</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>
